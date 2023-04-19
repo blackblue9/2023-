@@ -1,6 +1,5 @@
 import socket
 import rsa
-import threading
 
 
 # 与客户端进行通信
@@ -43,17 +42,14 @@ print(f'Server private key: {private_key}')
 # 处理根CA的事务
 with open('./ca_key/public_key.pem') as f:
     ca_public_key = rsa.PublicKey.load_pkcs1(f.read().encode())
-with open('./certification/hash.pem') as f:
-    hash=f.read().encode()
-with open('./certification/signature.pem') as f:
-    signature=f.read().encode()
-
+with open('./certification/hash.pem','rb') as f:
+    hash=f.read()
+with open('./certification/signature.pem','rb') as f:
+    signature=f.read()
 # 使用公钥验证数字签名
 if rsa.verify(hash, signature, ca_public_key):
-    print(f'签名验证成功: {signature.decode()}')
+    print('签名验证成功')
     communication()
-    print('Child thread finished')
-
 else:
     print('签名验证失败！')
 

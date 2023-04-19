@@ -60,17 +60,17 @@ hash = hashlib.sha256(message).digest()
 
 # Signing the hash using the private key
 signature = rsa.sign(hash, privkey, 'SHA-256')
-with open('./certification/signature.pem', 'w') as f:
-    f.write(str(signature))
-with open('./certification/hash.pem', 'w') as f:
-    f.write(str(hash))
+with open('./certification/signature.pem', 'wb') as f:
+    f.write(signature)
+with open('./certification/hash.pem', 'wb') as f:
+    f.write(hash)
 
 
 ##############################################
-# 创建一个线程对象
-thread = threading.Thread(target=verification)
-# 启动线程
-thread.start()
-# 等待线程结束
-thread.join()
-print('Child thread finished')
+# # 创建一个线程对象
+# thread = threading.Thread(target=verification)
+# # 启动线程
+# thread.start()
+# # 等待线程结束
+# thread.join()
+# print('Child thread finished')

@@ -21,7 +21,6 @@ def communication():
 # 生成一对公钥和私钥
 (public_key, private_key) = rsa.newkeys(512)
 # 保存为OpenSSL格式
-#print(type(public_key))
 with open('./rsa_key_client/public_key.pem', 'w') as f:
     f.write(public_key.save_pkcs1().decode())
 
