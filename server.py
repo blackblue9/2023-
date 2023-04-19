@@ -1,5 +1,6 @@
 import socket
 import rsa
+import os
 
 
 # 与客户端进行通信
@@ -40,46 +41,33 @@ print(f'Server private key: {private_key}')
 
 ##################################################################
 # 处理根CA的事务
-with open('./ca_key/public_key.pem') as f:
-    ca_public_key = rsa.PublicKey.load_pkcs1(f.read().encode())
-with open('./certification/hash.pem','rb') as f:
-    hash=f.read()
-with open('./certification/signature.pem','rb') as f:
-    signature=f.read()
+if os.path.isfile('./ca_key/public_key.pem'):
+    with open('./ca_key/public_key.pem') as f:
+        ca_public_key = rsa.PublicKey.load_pkcs1(f.read().encode())
+if os.path.isfile('./certification/hash.pem'):
+    with open('./certification/hash.pem', 'rb') as f:
+        hash = f.read()
+else:
+    print('此用户没有数字签名,不可进行通信')
+    exit()
+if os.path.isfile('./certification/signature.pem'):
+    with open('./certification/signature.pem', 'rb') as f:
+        signature = f.read()
+else:
+    print('此用户没有数字签名,不可进行通信')
+    exit()
 # 使用公钥验证数字签名
 if rsa.verify(hash, signature, ca_public_key):
     print('签名验证成功')
+    filename_hash = './certification/hash.pem'  # 文件名及路径
+    filename_sig = './certification/signature.pem'
+    try:
+        os.remove(filename_hash)
+        os.remove(filename_sig)
+        print(f'{filename_hash, filename_sig}已经被成功删除')
+    except OSError as e:
+        print(f'删除失败：{e}')
     communication()
 else:
-    print('签名验证失败！')
+    print('签名验证失败！请在根CA注册公钥证书')
 
-
-
-
-
-
-
-
-
-# server_ca_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# server_ca_socket.connect(('localhost', 8080))
-# # 接收root_ca发来的hash与signature
-# hash = server_ca_socket.recv(1024)
-# signature = server_ca_socket.recv(1024)
-#public_root_ca_key = server_ca_socket.recv(1024)
-
-# # 使用公钥验证数字签名
-# if rsa.verify(hash, signature, public_root_ca_key):
-#     server_ca_socket.close()
-#     print(f'签名验证成功: {signature.decode()}')
-#     # 创建一个线程对象
-#     thread = threading.Thread(target=communication)
-#     # 启动线程
-#     thread.start()
-#     # 等待线程结束
-#     thread.join()
-#     print('Child thread finished')
-#
-# else:
-#     print('签名验证失败！')
-#     server_ca_socket.close()
