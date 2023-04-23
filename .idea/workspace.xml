@@ -48,6 +48,14 @@
     &quot;last_opened_file_path&quot;: &quot;D:/PycharmProject/rsa_aes_ssl-master&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\研一下\课程文件\2023-rsa_homework-client\2023-rsa_homework" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\研一下\课程文件\2023-rsa_homework-client\2023-rsa_homework\rsa_key_server" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.client_register">
     <configuration name="client_register" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="rsa" />
@@ -62,7 +70,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/client_register.py" />
+      <option name="SCRIPT_NAME" value="E:\研一下\课程文件\2023-rsa_homework-client\2023-rsa_homework\rsa_key_server\client_register.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -84,7 +92,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/client_send.py" />
+      <option name="SCRIPT_NAME" value="E:\研一下\课程文件\2023-rsa_homework-client\2023-rsa_homework\rsa_key_server\client_send.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -128,7 +136,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/root_ca.py" />
+      <option name="SCRIPT_NAME" value="E:\研一下\课程文件\2023-rsa_homework-client\2023-rsa_homework\rsa_key_server\root_ca.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -150,7 +158,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/server.py" />
+      <option name="SCRIPT_NAME" value="E:\研一下\课程文件\2023-rsa_homework-client\2023-rsa_homework\rsa_key_server\server.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />

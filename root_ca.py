@@ -1,6 +1,7 @@
 import hashlib, socket
 import rsa_all as rsa
 import threading
+import os
 
 
 # 与服务端进行验证
@@ -30,17 +31,33 @@ def verification():
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
+###先判断是否有client key，如果由，那么不需要再运行client register，也不需要开启8080端口
+
+# if (not os.listdir('./rsa_key_client/')):
+#     # 监听端口
+#     server_socket.bind(('localhost', 8080))
+#     server_socket.listen(1)
+#
+#     # 等待客户端连接
+#     (client_socket, address) = server_socket.accept()
+#     print("client connected...")
+
 # 监听端口
 server_socket.bind(('localhost', 8080))
 server_socket.listen(1)
 
 # 等待客户端连接
 (client_socket, address) = server_socket.accept()
-print("client connected...")
+print("receiver connected...")
+
+#
+# print(not os.listdir('./rsa_key_client/'))
+
+
 # Generating public and private keys
 (pubkey, privkey) = rsa.newkeys(512)
 
-#保存ca的公钥私钥
+# 保存ca的公钥私钥
 with open('ca_key/public_key.pem', 'w') as f:
     f.write(pubkey.save_pkcs1().decode())
 
@@ -60,11 +77,12 @@ hash = hashlib.sha256(message).digest()
 
 # Signing the hash using the private key
 signature = rsa.sign(hash, privkey, 'SHA-256')
+
+# 往本地写入签名，以及用ca私钥加密过的client公钥
 with open('./certification/signature.pem', 'wb') as f:
     f.write(signature)
 with open('./certification/hash.pem', 'wb') as f:
     f.write(hash)
-
 
 ##############################################
 # # 创建一个线程对象
